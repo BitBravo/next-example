@@ -13,12 +13,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@common/*": ["./src/server/common/*"],
-      "@libs/*": ["./src/server/libs/*"],
-      "@models/*": ["./src/server/models/*"],
-      "@middleware/*": ["./src/server/middleware/*"]
+      "@common/*": ["./server/common/*"],
+      "@libs/*": ["./server/libs/*"],
+      "@models/*": ["./server/models/*"],
+      "@utils/*": ["./server/utils/*"]
     },
     "incremental": true,
     "noUncheckedIndexedAccess": true

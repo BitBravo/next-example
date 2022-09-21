@@ -1,4 +1,4 @@
-import Blog from "../models/Blog";
+import { Blog } from "../models/Blog";
 
 export const init_db = async () => {
   console.log("STARTED")

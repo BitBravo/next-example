@@ -1,12 +1,19 @@
 import { Schema, model, Model } from 'mongoose';
-import IBlog from "../../types/blog";
-
+import { IBlog } from "types/blog";
 
 type BlogModel = Model<IBlog>;
 
-const blogSchema = new Schema<IBlog, BlogModel>({
+const blogSchema = new Schema({
     name: String,
     description: String,
 });
 
-export default model<IBlog, BlogModel>("blogs") || model<IBlog, BlogModel>("blogs", blogSchema);
+
+export const Blog = (() => {
+    try {
+        return model<IBlog, BlogModel>("blogs")
+    } catch (error) {
+        return model<IBlog, BlogModel>("blogs", blogSchema)
+    }
+})()
+

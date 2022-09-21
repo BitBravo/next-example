@@ -1,6 +1,5 @@
 import { Schema, model, Model } from 'mongoose';
-import IUser from "../../types/user";
-
+import IUser from "types/user";
 
 type UserModel = Model<IUser>;
 
@@ -9,4 +8,11 @@ const userSchema = new Schema<IUser, UserModel>({
   last_name: String,
 });
 
-export default model<IUser, UserModel>("users") || model<IUser, UserModel>("users", userSchema);
+
+export const Blog = (() => {
+  try {
+    return model<IUser, UserModel>("users")
+  } catch (error) {
+    return model<IUser, UserModel>("users", userSchema);
+  }
+})()
