@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SEO from "components/SEO";
 // import Comments from "components/Comments";
+import { loadBlog } from "@utils/blogs";
 import { IBlog } from "types/blog";
 
 interface BlogProps {
@@ -56,8 +57,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps = async context => {
   try {
     const articleId = context.params?.articleId;
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/blog/${articleId}`);
-    const { data } = await res.json();
+    const data = await loadBlog(articleId);
 
     return {
       props: { blog: data },

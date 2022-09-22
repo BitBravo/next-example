@@ -4,7 +4,7 @@ import { dehydrate, QueryClient, useInfiniteQuery } from "react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 import SEO from "components/SEO";
 import TechnologyCard from "components/Card";
-import { loadBlogs } from "@utils/blogs";
+// import { loadBlogs } from "@utils/blogs";
 import { IBlog, IBlogPagination } from "types/blog";
 
 
@@ -51,15 +51,15 @@ const Home: NextPage = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const queryClient = new QueryClient();
-    await queryClient.prefetchQuery(["blogs"], async () => await loadBlogs({ page: 0 }));
-    return { props: { dehydratedState: dehydrate(queryClient) }, revalidate: 60 };
-  } catch (error) {
-    console.error(error);
-    return { notFound: true };
-  }
-};
+// export const getStaticProps: GetStaticProps = async () => {
+//   try {
+//     const queryClient = new QueryClient();
+//     await queryClient.prefetchQuery(["blogs"], async () => await loadBlogs({ page: 0 }));
+//     return { props: { dehydratedState: dehydrate(queryClient) }, revalidate: 60 };
+//   } catch (error) {
+//     console.error(error);
+//     return { notFound: true };
+//   }
+// };
 
 export default Home;
