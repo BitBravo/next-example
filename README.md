@@ -6,7 +6,7 @@
 - Create a .env file
 - Add MONGO_URI=``;
 - Initialize database with dummy data
-`yarn seed`
+  `yarn seed`
 - Run it locally using `yarn dev`
 
 
