@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { connect } from "mongoose"
 const {
     // Attempts to connect to MongoDB and then tries to connect locally:)

@@ -1,6 +1,14 @@
-# Create T3 App
+# NEXTJS
 
-This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
+## How to run
+- cd project_path
+- Install dependencies using `yarn or npm install`.
+- Create a .env file
+- Add MONGO_URI=``;
+- Initialize database with dummy data
+`yarn seed`
+- Run it locally using `yarn dev`
+
 
 ## Why are there `.js` files in here?
 

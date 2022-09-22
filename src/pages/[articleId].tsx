@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { dehydrate, QueryClient } from "react-query";
 import SEO from "components/SEO";
-// import Comments from "components/Comments";
-import { loadBlog } from "@utils/blogs";
+import Comments from "components/Comments";
+import { loadBlog, loadComments } from "@utils/blogs";
 import { IBlog } from "types/blog";
 
 interface BlogProps {
@@ -45,7 +46,7 @@ const Blog: NextPage<BlogProps> = ({ blog }) => {
           </Link>
         </div>
       </div>
-      {/* <Comments /> */}
+      <Comments />
     </>
   );
 };
@@ -57,10 +58,20 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps = async context => {
   try {
     const articleId = context.params?.articleId as string;
+    const queryClient = new QueryClient();
+    await queryClient.prefetchQuery(["comments", articleId, 0], () =>
+      loadComments({
+        blogId: articleId
+      })
+    );
+
     const data = await loadBlog(articleId);
 
     return {
-      props: { blog: data },
+      props: {
+        dehydratedState: dehydrate(queryClient),
+        blog: data
+      },
       revalidate: 10
     };
   } catch (error) {

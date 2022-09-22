@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { loadBlogs } from "@utils/blogs"
 
-
 async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
         const { page = 0, limit = 18 } = req.query;
