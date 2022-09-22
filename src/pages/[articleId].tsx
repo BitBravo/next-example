@@ -3,7 +3,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import SEO from "components/SEO";
-import Comments from "components/Comments";
+// import Comments from "components/Comments";
 import { IBlog } from "types/blog";
 
 interface BlogProps {
@@ -44,7 +44,7 @@ const Blog: NextPage<BlogProps> = ({ blog }) => {
           </Link>
         </div>
       </div>
-      <Comments />
+      {/* <Comments /> */}
     </>
   );
 };
