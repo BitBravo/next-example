@@ -56,7 +56,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps = async context => {
   try {
-    const articleId = context.params?.articleId;
+    const articleId = context.params?.articleId as string;
     const data = await loadBlog(articleId);
 
     return {
